@@ -1,0 +1,97 @@
+.careerRankContainer {
+    height: 100%;
+    width: 100%;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.careerRankRow {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  padding: 4px 19px 7px 25px;
+  box-sizing: border-box;
+}
+
+.avatarContainer {
+  flex-shrink: 0;
+  width: 50px;
+  margin-right: 13px;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 100%;
+  height: 38px;
+  background-size: 100.37% 200%;
+  background-repeat: no-repeat;
+  background-position: top;
+  flex-shrink: 0;
+}
+
+.chatBadge {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  background-color: #78cee8;
+  border-radius: 10px;
+  padding: 5px 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatText {
+  font-family: 'Inter', sans-serif;
+  font-weight: bold;
+  font-size: 6px;
+  line-height: 1.22281;
+  color: #e9fdff;
+  white-space: pre;
+}
+
+.characterInfo {
+  flex-shrink: 0;
+  width: 267px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: flex-start;
+  line-height: 0;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.characterDescription {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  color: #000000;
+  line-height: normal;
+  white-space: pre;
+}
+
+.characterName {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 10px;
+  color: #656565;
+  line-height: normal;
+  white-space: pre;
+}

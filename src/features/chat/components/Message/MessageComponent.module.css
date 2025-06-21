@@ -60,4 +60,6 @@
     font-style: normal;
     font-weight: 500;
     line-height: 119.455%; /* 17.918px */
+
+    white-space: pre-line;
 }

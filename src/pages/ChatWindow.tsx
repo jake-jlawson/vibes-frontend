@@ -69,7 +69,7 @@ const ChatWindow: React.FC = () => {
 
             <div className={styles.controlPanel1}>
               <ExpansiblePanel title="Career Profile">
-                <div className={styles.controlPanel1Content}>
+                <div className={styles.controlPanelContent}>
                   
                 </div>
               </ExpansiblePanel>
@@ -77,8 +77,8 @@ const ChatWindow: React.FC = () => {
 
             <div className={styles.controlPanel2}>
             <ExpansiblePanel title="Top Ranked Careers">
-                <div className={styles.controlPanel1Content}>
-                  <CareerRank data={careerRecommendations} />
+                <div className={styles.controlPanelContent}>
+                  <CareerRank data={careerRecommendations || null} />
                 </div>
               </ExpansiblePanel>
             </div>
