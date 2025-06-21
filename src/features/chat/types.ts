@@ -9,4 +9,5 @@ export interface Message {
     content: string;
     sender: 'user' | 'character';
     timestamp: Date;
+    character?: string;
 }
