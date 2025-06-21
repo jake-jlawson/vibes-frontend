@@ -1,0 +1,15 @@
+.chatStream {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  height: auto;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1 0 0;
+
+  overflow-y: scroll;
+}

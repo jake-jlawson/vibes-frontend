@@ -1,0 +1,33 @@
+{
+  "projectName": "career-bot-frontend",
+  "defaultModel": "claude-3.5-sonnet",
+  "formatOnSave": true,
+  "typescript": {
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true
+  },
+  "react": {
+    "jsx": "react-jsx",
+    "strictMode": true
+  },
+  "editor": {
+    "tabSize": 2,
+    "insertSpaces": true,
+    "trimTrailingWhitespace": true,
+    "insertFinalNewline": true
+  },
+  "ai": {
+    "contextWindow": "large",
+    "preferLocalModels": false,
+    "autoComplete": true
+  },
+  "linting": {
+    "eslint": true,
+    "typescript": true
+  },
+  "search": {
+    "includeNodeModules": false,
+    "includeGit": false
+  }
+} 

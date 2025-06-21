@@ -1,0 +1,97 @@
+.chatBox {
+  background-color: #ffffff;
+  position: relative;
+  border-radius: 16px;
+  width: 80%;
+  border: 1px solid #cbcbcb;
+  box-shadow: 0px 1px 1.6px 0px rgba(0, 0, 0, 0.15);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.microphoneContainer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.microphoneButton {
+  background-color: #373737;
+  height: 30px;
+  width: 30px;
+  border-radius: 13px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset -2px 3px 6.3px 0px rgba(255, 255, 255, 0.39);
+  transition: background-color 0.2s ease;
+}
+
+.inputContainer textarea {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.microphoneButton:hover {
+  background-color: #4a4a4a;
+}
+
+.microphoneButton:active {
+  background-color: #2a2a2a;
+}
+
+.microphoneIcon {
+  width: 11.07px;
+  height: 16.102px;
+  mix-blend-mode: screen;
+}
+
+.inputContainer {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.textArea {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  color: #000000;
+  resize: none;
+  min-height: 20px;
+  max-height: 120px;
+  padding: 14px 15px 14px 0;
+  box-sizing: border-box;
+  line-height: 1.4;
+  overflow-y: hidden;
+}
+
+.textArea::placeholder {
+  color: #838383;
+}
+
+.textArea:focus {
+  outline: none;
+}
+
+/* Auto-resize behavior */
+.textArea::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+} 

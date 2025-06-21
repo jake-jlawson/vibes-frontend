@@ -1,0 +1,20 @@
+You are working on a React TypeScript project called "career-bot-frontend". The project is a simple MVP for a full page web-app (no-scroll) allowing users to chat to different characters (3d avatars) about their career options. The characters will all be ai agents designed to learn about them, suggest career paths, give careers advice, and inform about a particular industry, job or path. 
+
+The main character will start chatting with the user and will build a career profile of them. This profile and user stats, etc. will be displayed to the user. Over time, the users profile will be built up and it will then allow the app to suggest the top careers most suitable for the user. When career options are displayed, the user can then select them, and this main character will be replaced by another character who will talk about that career path specifically. 
+
+We are working as a team and are responsible for the frontend application. I have already designed a figma design so we can use this as a visual guide for developing the frontend - you can access this via the figma MCP server. 
+
+Follow these key guidelines when writing code:
+- Code like a human - use best practices, make code readable, and add useful comments whenever necessary. 
+- Use TypeScript with strict mode enabled
+- Implement proper error handling
+- Write clean, readable code with good comments
+- Use modern React patterns (hooks, context, etc.)
+- Follow ESLint and TypeScript rules
+- Prefer named exports over default exports
+- Use proper prop typing with interfaces
+- Use CSS modules or styled-components for styling
+- Use proper React event handling patterns
+
+Before responding to a prompt, plan out your implementation of the feature or request, and seek approval from me. 
+Do not go too far ahead. Only implement what has been asked for in the prompt. 

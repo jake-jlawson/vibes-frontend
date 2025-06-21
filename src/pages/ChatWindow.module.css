@@ -1,0 +1,124 @@
+* {
+  --chat-size: 40%;
+}
+
+.chatWindow {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.bgOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(136, 75, 38, 0.25);
+  z-index: -1;
+}
+
+.chatRoomContent {
+  flex: 1;
+  position: relative;
+
+  display: flex;
+  flex-direction: row;
+  gap: 250px;
+  padding: 0 38px 58px 58px;
+  box-sizing: border-box;
+}
+
+/* Control Area - Left Side */
+.controlArea {
+  flex: 1;
+  height: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+  height: 100%;
+}
+
+.controlPanel1 {
+  flex: 1;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.controlPanel2 {
+  height: 249px;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+
+/* Character Area - Center */
+.characterArea {
+  position: absolute;
+  width: 533.333px;
+  height: 800px;
+
+  position: absolute;
+  right: calc(var(--chat-size) - 120px);
+
+  bottom: -120px;
+}
+
+/* Chat Area - Right Side */
+.chatArea {
+  width: var(--chat-size);
+  height: 100%;
+  flex-shrink: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  overflow-y: hidden;
+}
+
+.chatStream {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow-y: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  z-index: 1;
+}
+
+.chatBoxContainer {
+  width: 100%;
+  height: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+
+  padding: 0 15px;
+  box-sizing: border-box;
+}

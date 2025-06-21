@@ -1,0 +1,63 @@
+* {
+    --inset-margin: 15px;
+    --outset-margin: 100px;
+
+    box-sizing: border-box;
+}
+
+/* Message Container */
+.messageContainer {
+    position: relative;
+    width: 100%;
+}
+
+/* Left orientation (Character messages) */
+.messageContainer.left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 0px 0px var(--inset-margin);
+}
+
+/* Right orientation (User messages) */
+.messageContainer.right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 0px var(--inset-margin) 0px 0px;
+}
+  
+  /* Chat Bubble */
+.chatBubble {
+    position: relative;
+    color: #000;
+    border-radius: 18px;
+
+    padding: 15px 20px;
+
+    max-width: 75%;
+}
+
+.chatBubble.left {
+    background-color: rgba(217, 217, 217, 0.66);
+
+    fill: rgba(217, 217, 217, 0.66);
+    box-shadow: 0px 0px 22.1px 0px rgba(242, 242, 242, 0.70) inset;
+    filter: drop-shadow(0px 4px 6.3px rgba(0, 0, 0, 0.05));
+}
+
+.chatBubble.right {
+    background-color: rgba(120, 206, 232, 0.66);
+    
+    fill: rgba(120, 206, 232, 0.66);
+    box-shadow: 0px 0px 22.1px 0px rgba(1, 181, 235, 0.70) inset;
+    filter: drop-shadow(0px 4px 6.3px rgba(0, 0, 0, 0.05));
+}
+
+.messageText {
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 119.455%; /* 17.918px */
+}

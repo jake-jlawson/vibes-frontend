@@ -1,0 +1,114 @@
+.expansiblePanel {
+  background-color: #fafafa;
+  position: relative;
+  border-radius: 4px;
+  box-shadow: 0px 1px 5.1px 0px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  height: 100%;
+}
+
+.headerContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  padding: 12px 15px;
+
+  gap: 11px;
+  
+  border-radius: 4px 4px 0px 0px;
+  border-bottom: 1px solid #D7D7D7;
+  background: #FAFAFA;
+  box-shadow: 0px 4px 2.5px -2px rgba(0, 0, 0, 0.05);
+
+  cursor: pointer;
+  user-select: none;
+}
+
+.headerContent:hover {
+  background-color: #f5f5f5;
+  transition: background-color 0.2s ease;
+}
+
+.iconContainer {
+  height: 11.429px;
+  position: relative;
+  flex-shrink: 0;
+  width: 10px;
+}
+
+.icon {
+  display: block;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+}
+
+.titleText {
+  flex-basis: 0;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  flex-grow: 1;
+  height: 18px;
+  line-height: 1;
+  min-height: 1px;
+  min-width: 1px;
+  font-style: normal;
+  position: relative;
+  flex-shrink: 0;
+  color: #000000;
+  font-size: 15px;
+  text-align: left;
+
+  color: #000;
+
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.caretContainer {
+  height: 5px;
+  position: relative;
+  flex-shrink: 0;
+  width: 8.814px;
+  transition: transform 0.2s ease;
+}
+
+.caretUp {
+  transform: rotate(180deg);
+}
+
+.caretDown {
+  transform: rotate(0deg);
+}
+
+.caretIcon {
+  display: block;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  color: #666;
+}
+
+.panelContent {
+  flex-basis: 0;
+  flex-grow: 1;
+  min-height: 1px;
+  min-width: 1px;
+  position: relative;
+  flex-shrink: 0;
+  width: 100%;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.panelContent.expanded {
+  max-height: 500px; /* Adjust based on your content needs */
+  opacity: 1;
+}
+
+.panelContent.collapsed {
+  display: none;
+}
