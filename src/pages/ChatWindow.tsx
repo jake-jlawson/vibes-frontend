@@ -9,18 +9,16 @@ import Character from '../components/Character/Character';
 import ChatStream from '../features/chat/components/ChatStream/ChatStream';
 import { ChatBox } from '../features/chat/components/ChatBox/ChatBox';
 import CareerRank from '../features/career_profile/components/CareerRank/CareerRank';
+import CareerProfile from '../components/CareerProfile/CareerProfile';
 
 // Hooks
 import useChat from '../features/chat/useChat';
 import useCareerProfile from '../features/career_profile/useCareers';
 
-
 const ChatWindow: React.FC = () => {
-  
   const { chatStream, addMessage } = useChat();
-  const { careerProfile, careerRecommendations, updateCareers } = useCareerProfile();
+  const { careerProfile, careerRecommendations, updateCareers, loading, error } = useCareerProfile();
   const [activeCharacter, setActiveCharacter] = useState<string>('mentor');
-
 
   /**Reset on mount*/
   useEffect(() => {
@@ -31,18 +29,17 @@ const ChatWindow: React.FC = () => {
         'accept': 'application/json',
       },
     })
-    .then(response => {
-      if (response.ok) {
-        console.log('Reset endpoint called successfully');
-      } else {
-        console.error('Failed to call reset endpoint');
-      }
-    })
-    .catch(error => {
-      console.error('Error calling reset endpoint:', error);
-    });
-  }, []); 
-
+      .then(response => {
+        if (response.ok) {
+          console.log('Reset endpoint called successfully');
+        } else {
+          console.error('Failed to call reset endpoint');
+        }
+      })
+      .catch(error => {
+        console.error('Error calling reset endpoint:', error);
+      });
+  }, []);
 
   useEffect(() => {
     console.log("chat stream:", chatStream);
@@ -56,52 +53,54 @@ const ChatWindow: React.FC = () => {
     console.log("career recommendations:", careerRecommendations);
   }, [careerRecommendations]);
 
-  
-
   return (
     <div className={styles.chatWindow}>
       <ChatRoomHeader />
-      
+
       <div className={styles.chatRoomContent}>
 
-          {/* Control Area - Left Side */}
-          <div className={styles.controlArea}>
+        {/* Control Area - Left Side */}
+        <div className={styles.controlArea}>
 
-            <div className={styles.controlPanel1}>
-              <ExpansiblePanel title="Career Profile">
-                <div className={styles.controlPanel1Content}>
-                  
-                </div>
-              </ExpansiblePanel>
-            </div>
+          <div className={styles.controlPanel1}>
+            <ExpansiblePanel title="Career Profile">
+              <div className={styles.controlPanel1Content}>
+                <CareerProfile
+                  profileData={careerProfile}
+                  loading={loading}
+                  error={error}
+                />
+              </div>
+            </ExpansiblePanel>
+          </div>
 
-            <div className={styles.controlPanel2}>
+          <div className={styles.controlPanel2}>
             <ExpansiblePanel title="Top Ranked Careers">
-                <div className={styles.controlPanel1Content}>
-                  <CareerRank data={careerRecommendations} />
-                </div>
-              </ExpansiblePanel>
-            </div>
+              <div className={styles.controlPanel1Content}>
+                <CareerRank data={careerRecommendations} />
+              </div>
+            </ExpansiblePanel>
+          </div>
+        </div>
+
+        {/* Character Area - Center */}
+        <div className={styles.characterArea}>
+          <Character />
+        </div>
+
+        {/* Chat Area - Right Side */}
+        <div className={styles.chatArea}>
+          <div className={styles.chatStream}>
+            <ChatStream chats={chatStream} />
           </div>
 
-          {/* Character Area - Center */}
-          <div className={styles.characterArea}>
-            <Character />
+          {/* Chat Input Container */}
+          <div className={styles.chatBoxContainer}>
+            <ChatBox onSendMessage={(message) => addMessage(message, 'user', activeCharacter, updateCareers)} />
           </div>
-
-          {/* Chat Area - Right Side */}
-          <div className={styles.chatArea}>
-            <div className={styles.chatStream}>
-              <ChatStream chats={chatStream} />
-            </div>
-    
-            {/* Chat Input Container */}
-            <div className={styles.chatBoxContainer}>
-              <ChatBox onSendMessage={(message) => addMessage(message, 'user', activeCharacter, updateCareers)} />
-            </div>
-          </div>
+        </div>
       </div>
-      
+
       {/* Background */}
       <div className={styles.bgOverlay}></div>
       <img src={bgImage} alt="background" className={styles.bgImage} />
@@ -109,4 +108,4 @@ const ChatWindow: React.FC = () => {
   );
 };
 
-export default ChatWindow; 
+export default ChatWindow;
