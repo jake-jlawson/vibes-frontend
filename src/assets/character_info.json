@@ -1,0 +1,79 @@
+{
+  "characters": {
+    "mentor": {
+      "color": "#4A90E2",
+      "name": "Main Mentor",
+      "description": "Your guide to finding the right mentor"
+    },
+    "florence_nightingale": {
+      "color": "#5B6F7C",
+      "name": "Florence Nightingale",
+      "description": "Healthcare and compassion"
+    },
+    "maria_montessori": {
+      "color": "#282729",
+      "name": "Maria Montessori",
+      "description": "Innovative education and child development"
+    },
+    "george_carver": {
+      "color": "#B06D1D",
+      "name": "George Washington Carver",
+      "description": "Agriculture and sustainability"
+    },
+    "brunel": {
+      "color": "#3F3B32",
+      "name": "Isambard Kingdom Brunel",
+      "description": "Engineering and infrastructure"
+    },
+    "ada_lovelace": {
+      "color": "#CE8667",
+      "name": "Ada Lovelace",
+      "description": "Computing and mathematical logic"
+    },
+    "walt_disney": {
+      "color": "#BC4A19",
+      "name": "Walt Disney",
+      "description": "Creativity and entertainment"
+    },
+    "warren_buffet": {
+      "color": "#ACC16F",
+      "name": "Warren Buffett",
+      "description": "Finance and investing"
+    },
+    "rbg": {
+      "color": "#D8B690",
+      "name": "Ruth Bader Ginsburg",
+      "description": "Law and justice"
+    },
+    "marie_curie": {
+      "color": "#405842",
+      "name": "Marie Curie",
+      "description": "Chemistry and scientific research"
+    },
+    "greta_thunberg": {
+      "color": "#E4A433",
+      "name": "Greta Thunberg",
+      "description": "Climate activism and sustainability"
+    },
+    "neil_armstrong": {
+      "color": "#D8CBB9",
+      "name": "Neil Armstrong",
+      "description": "Space exploration and aerospace"
+    },
+    "coco_chanel": {
+      "color": "#2B2418",
+      "name": "Coco Chanel",
+      "description": "Fashion and design"
+    },
+    "elon_musk": {
+      "color": "#00BCD4",
+      "name": "Elon Musk",
+      "description": "Technology, transport, and innovation"
+    },
+    "anthony_bourdain": {
+      "color": "#FF5722",
+      "name": "Anthony Bourdain",
+      "description": "Food, travel, and global culture"
+    }
+  }
+}

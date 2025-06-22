@@ -1,6 +1,7 @@
 // CareerProfile.tsx
 import React from 'react';
 import styles from './CareerProfile.module.css';
+import NoDataMessage from '../../../../components/NoDataMessage';
 
 interface PersonalityScores {
     energy_social_drive: number;
@@ -78,11 +79,7 @@ const CareerProfile: React.FC<CareerProfileProps> = ({
     }
 
     if (!profileData) {
-        return (
-            <div className={styles.container}>
-                <div className={styles.error}>No profile data available</div>
-            </div>
-        );
+        return <NoDataMessage message="No profile data available yet. Keep chatting!" />;
     }
 
     return (

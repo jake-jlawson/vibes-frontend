@@ -43,6 +43,25 @@ const useChat = () => {
 
 
     /**
+     * @function privateSend
+     * Send a message to the server without adding it to the chat stream
+     * @param {string} character - The character to send the message to
+     * @param {string} message - The message to send
+     * @returns {Promise<string>} - The response from the server
+     */
+    const privateSend = async (character: string, message: string) => {
+      sendChatMessage(character, message).then(response => {
+        const newMessage: Message = {
+              id: Date.now(),
+              content: response.message || '',
+              sender: 'character',
+              timestamp: new Date(),
+          };
+          setChatStream(prev => [...prev, newMessage]);
+      });
+    };
+
+    /**
      * @function sendMessageToServer
      * @description Sends a message to the server and recieves a response
      * @param {string} message - The message to send
@@ -92,12 +111,24 @@ const useChat = () => {
         throw error;
       }
     };
+
+
+    /**
+     * @function clearChatStream
+     * @description Clears the chat stream
+     * @returns {void}
+     */
+    const clearChatStream = () => {
+        setChatStream([]);
+    };
     
     
     
     return { 
         chatStream,
         addMessage,
+        clearChatStream,
+        privateSend
      };
 }
 

@@ -30,8 +30,10 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(136, 75, 38, 0.25);
   z-index: -1;
+
+  mix-blend-mode: overlay;
+  opacity: 0.8;
 }
 
 .chatRoomContent {
@@ -57,17 +59,8 @@
   height: 100%;
 }
 
-.controlPanel1 {
-  flex: 1;
-  width: 100%;
-  flex-grow: 1;
-}
 
-.controlPanel2 {
-  height: 249px;
-  width: 100%;
-  flex-shrink: 0;
-}
+
 
 .controlPanelContent {
   width: 100%;

@@ -9,16 +9,25 @@ import Character from '../components/Character/Character';
 import ChatStream from '../features/chat/components/ChatStream/ChatStream';
 import { ChatBox } from '../features/chat/components/ChatBox/ChatBox';
 import CareerRank from '../features/career_profile/components/CareerRank/CareerRank';
-import CareerProfile from '../components/CareerProfile/CareerProfile';
+import CareerProfile from '../features/career_profile/components/CareerProfile/CareerProfile';
 
 // Hooks
 import useChat from '../features/chat/useChat';
 import useCareerProfile from '../features/career_profile/useCareers';
 
+// Data
+import character_info from '../assets/character_info.json';
+
+
+
+
+
+
+
 const ChatWindow: React.FC = () => {
-  const { chatStream, addMessage } = useChat();
-  const { careerProfile, careerRecommendations, updateCareers, loading, error } = useCareerProfile();
-  const [activeCharacter, setActiveCharacter] = useState<string>('mentor');
+  const { chatStream, addMessage, clearChatStream, privateSend } = useChat();
+  const { careerProfile, careerRecommendations, updateCareers } = useCareerProfile();
+  const [activeCharacter, setActiveCharacter] = useState<string>('neil_armstrong');
 
   /**Reset on mount*/
   useEffect(() => {
@@ -41,18 +50,21 @@ const ChatWindow: React.FC = () => {
       });
   }, []);
 
-  useEffect(() => {
-    console.log("chat stream:", chatStream);
-  }, [chatStream]);
 
-  useEffect(() => {
-    console.log("career profile:", careerProfile);
-  }, [careerProfile]);
+  const handleCharacterChange = (characterId: string) => {
+    
+    // first set the new character
+    setActiveCharacter(characterId);
 
-  useEffect(() => {
-    console.log("career recommendations:", careerRecommendations);
-  }, [careerRecommendations]);
+    // clear the chat stream
+    clearChatStream();
 
+    // ask the character to introduce themselves
+    privateSend(characterId, `I'm interested in ${character_info.characters[characterId].description}. Please introduce yourself and begin a conversation with me about my career ideas. Make sure the message is short and concise.`);
+  };
+
+
+  
   return (
     <div className={styles.chatWindow}>
       <ChatRoomHeader />
@@ -64,28 +76,22 @@ const ChatWindow: React.FC = () => {
 
           <div className={styles.controlPanel1}>
             <ExpansiblePanel title="Career Profile">
-              <div className={styles.controlPanel1Content}>
-                <CareerProfile
+              <CareerProfile
                   profileData={careerProfile}
-                  loading={loading}
-                  error={error}
                 />
-              </div>
             </ExpansiblePanel>
           </div>
 
           <div className={styles.controlPanel2}>
-            <ExpansiblePanel title="Top Ranked Careers">
-                <div className={styles.controlPanelContent}>
-                  <CareerRank data={careerRecommendations || null} />
-                </div>
-              </ExpansiblePanel>
-            </div>
+            <ExpansiblePanel title="Your Top Ranked Careers">
+              <CareerRank data={careerRecommendations || null} characterSetter={handleCharacterChange}/>
+            </ExpansiblePanel>
           </div>
+        </div>
 
         {/* Character Area - Center */}
         <div className={styles.characterArea}>
-          <Character />
+          <Character character_id={activeCharacter} />
         </div>
 
         {/* Chat Area - Right Side */}
@@ -102,7 +108,8 @@ const ChatWindow: React.FC = () => {
       </div>
 
       {/* Background */}
-      <div className={styles.bgOverlay}></div>
+      
+      <div className={styles.bgOverlay} style={{ backgroundColor: character_info.characters[activeCharacter].color }}></div>
       <img src={bgImage} alt="background" className={styles.bgImage} />
     </div>
   );
