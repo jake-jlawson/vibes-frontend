@@ -61,7 +61,7 @@ const ChatWindow: React.FC = () => {
     clearChatStream();
 
     // ask the character to introduce themselves
-    privateSend(characterId, `I'm interested in ${character_info.characters[characterId].description}. Please introduce yourself and begin a conversation with me about my career ideas. Make sure the message is short and concise.`);
+    privateSend(characterId, `I'm interested in ${character_info.characters[characterId].description}. Please introduce yourself and begin a conversation with me about my career ideas. Make sure the message is very short and concise, 1-4 sentences.`);
   };
 
 

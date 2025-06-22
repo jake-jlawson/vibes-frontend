@@ -4,10 +4,11 @@
     
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
     
     overflow-y: auto;
     overflow-x: hidden;
+    padding: 8px;
     
     /* Improve animation performance */
     will-change: transform;
@@ -15,24 +16,40 @@
 }
 
 .careerRankRow {
-  background-color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
-  padding: 4px 19px 7px 25px;
+  padding: 16px 24px 16px 28px;
   box-sizing: border-box;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   
   /* Ensure smooth animations */
   will-change: transform;
   transform-origin: center;
-  border-radius: 4px;
+  border-radius: 8px;
+}
+
+.careerRankRow:hover {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.12);
+  border-color: #cbd5e1;
+  transform: translateY(-2px);
+}
+
+.careerRankRow:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .avatarContainer {
   flex-shrink: 0;
   width: 50px;
-  margin-right: 13px;
+  margin-right: 16px;
 }
 
 .avatarWrapper {
@@ -51,30 +68,48 @@
   background-repeat: no-repeat;
   background-position: top;
   flex-shrink: 0;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.careerRankRow:hover .avatar {
+  transform: scale(1.05);
 }
 
 .chatBadge {
   position: absolute;
   bottom: -4px;
   left: 0;
-  background-color: #78cee8;
-  border-radius: 10px;
-  padding: 5px 5px;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 12px;
+  padding: 6px 8px;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.chatBadge:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
 }
 
 .chatText {
-  font-family: 'Inter', sans-serif;
-  font-weight: bold;
-  font-size: 6px;
-  line-height: 1.22281;
-  color: #e9fdff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: 600;
+  font-size: 7px;
+  line-height: 1.2;
+  color: #ffffff;
   white-space: pre;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .characterInfo {
@@ -82,7 +117,7 @@
   width: 267px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
   align-items: flex-start;
   line-height: 0;
   text-align: left;
@@ -90,19 +125,41 @@
 }
 
 .characterDescription {
-  font-family: 'Inter', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
   font-weight: 600;
-  font-size: 13px;
-  color: #000000;
-  line-height: normal;
+  font-size: 14px;
+  color: #1e293b;
+  line-height: 1.3;
   white-space: pre;
+  letter-spacing: -0.01em;
 }
 
 .characterName {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 10px;
-  color: #656565;
-  line-height: normal;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.2;
   white-space: pre;
+  letter-spacing: -0.005em;
+}
+
+/* Custom scrollbar styling */
+.careerRankContainer::-webkit-scrollbar {
+  width: 6px;
+}
+
+.careerRankContainer::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.careerRankContainer::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.careerRankContainer::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

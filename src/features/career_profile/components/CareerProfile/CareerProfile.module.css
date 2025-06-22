@@ -2,47 +2,54 @@
 .container {
     width: 100%;
     height: 100%;
-    padding: 8px;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    padding: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
     font-size: 0.75rem;
     overflow-y: auto;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
 }
 
 .header {
     text-align: center;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #e2e8f0;
 }
 
 .title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #1a1a1a;
-    margin: 0 0 4px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.02em;
 }
 
 .subtitle {
-    font-size: 0.7rem;
-    color: #666;
+    font-size: 0.75rem;
+    color: #64748b;
     margin: 0;
+    font-weight: 500;
+    letter-spacing: -0.005em;
 }
 
 .personalitySection {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .sectionTitle {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 8px;
-    border-bottom: 1px solid #e0e0e0;
-    padding-bottom: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 12px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 6px;
+    letter-spacing: -0.01em;
 }
 
 .scoresGrid {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
     
     /* Improve animation performance */
     will-change: transform;
@@ -50,11 +57,12 @@
 }
 
 .scoreCard {
-    background: #f8f9fa;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    padding: 8px;
-    transition: background-color 0.2s ease;
+    background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
     
     /* Ensure smooth animations */
     will-change: transform;
@@ -62,41 +70,48 @@
 }
 
 .scoreCard:hover {
-    background: #f0f1f2;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-color: #cbd5e1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06), 0 2px 4px rgba(0, 0, 0, 0.08);
+    transform: translateY(-1px);
 }
 
 .traitHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 
 .traitName {
-    font-size: 0.7rem;
-    font-weight: 500;
-    color: #333;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #1e293b;
     margin: 0;
+    letter-spacing: -0.01em;
 }
 
 .scoreValue {
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 2px 4px;
-    border-radius: 3px;
-    background: #f5f5f5;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
     
     /* Smooth score value transitions */
     will-change: transform;
+    transition: all 0.2s ease;
 }
 
 .scoreBar {
     width: 100%;
-    height: 4px;
-    background: #e0e0e0;
-    border-radius: 2px;
+    height: 6px;
+    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    border-radius: 3px;
     overflow: hidden;
-    margin-bottom: 4px;
+    margin-bottom: 8px;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.06);
     
     /* Ensure bar animations are smooth */
     position: relative;
@@ -104,79 +119,121 @@
 
 .scoreProgress {
     height: 100%;
-    border-radius: 2px;
+    border-radius: 3px;
+    background: linear-gradient(135deg, currentColor 0%, currentColor 85%, rgba(255, 255, 255, 0.2) 100%);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     
     /* Optimize bar animation performance */
     will-change: width;
     transform-origin: left center;
+    position: relative;
+}
+
+.scoreProgress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+    border-radius: 3px 3px 0 0;
 }
 
 .traitDescription {
-    font-size: 0.65rem;
-    color: #666;
+    font-size: 0.68rem;
+    color: #64748b;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.3;
+    font-weight: 400;
 }
 
 /* Score color variants */
 .lowScore {
-    background: #ff6b6b;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     color: white;
+    border-color: #f87171;
 }
 
 .lowScore.scoreProgress {
-    background: #ff6b6b;
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 85%, rgba(255, 255, 255, 0.2) 100%);
 }
 
 .mediumScore {
-    background: #ffd93d;
-    color: #333;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+    border-color: #fbbf24;
 }
 
 .mediumScore.scoreProgress {
-    background: #ffd93d;
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 85%, rgba(255, 255, 255, 0.2) 100%);
 }
 
 .highScore {
-    background: #51cf66;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
+    border-color: #34d399;
 }
 
 .highScore.scoreProgress {
-    background: #51cf66;
+    background: linear-gradient(135deg, #10b981 0%, #059669 85%, rgba(255, 255, 255, 0.2) 100%);
 }
 
 .footer {
     text-align: center;
-    margin-top: 8px;
-    padding-top: 6px;
-    border-top: 1px solid #e0e0e0;
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px solid #e2e8f0;
 }
 
 .analysisInfo {
-    font-size: 0.65rem;
-    color: #666;
+    font-size: 0.68rem;
+    color: #64748b;
     margin: 0;
+    font-weight: 500;
 }
 
 .loading,
 .error {
     text-align: center;
-    padding: 12px;
+    padding: 16px;
     font-size: 0.75rem;
+    border-radius: 8px;
 }
 
 .loading {
-    color: #666;
+    color: #64748b;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border: 1px solid #e2e8f0;
 }
 
 .error {
-    color: #ff6b6b;
-    background: #fff5f5;
+    color: #dc2626;
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
     border: 1px solid #fecaca;
-    border-radius: 4px;
     font-size: 0.7rem;
-    padding: 8px;
+    padding: 12px;
+    font-weight: 500;
+}
+
+/* Custom scrollbar styling */
+.container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.container::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 
 /* Responsive design */

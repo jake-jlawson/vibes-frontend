@@ -1,12 +1,19 @@
 .expansiblePanel {
-  background-color: #fafafa;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
   position: relative;
-  border-radius: 4px;
-  box-shadow: 0px 1px 5.1px 0px rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.expansiblePanel:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.12);
+  border-color: #cbd5e1;
 }
 
 .headerContent {
@@ -14,23 +21,26 @@
   flex-direction: row;
   align-items: center;
   position: relative;
-  padding: 12px 15px;
-  gap: 11px;
+  padding: 16px 20px;
+  gap: 14px;
 
-  border-radius: 4px 4px 0px 0px;
-  border-bottom: 1px solid #D7D7D7;
-  background: #FAFAFA;
-  box-shadow: 0px 4px 2.5px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 8px 8px 0px 0px;
+  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  backdrop-filter: blur(10px);
 
   cursor: pointer;
   user-select: none;
   flex-shrink: 0;
-  /* Prevent header from shrinking */
+  transition: all 0.2s ease;
 }
 
 .headerContent:hover {
-  background-color: #f5f5f5;
-  transition: background-color 0.2s ease;
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.headerContent:active {
+  transform: translateY(1px);
 }
 
 .iconContainer {
@@ -38,6 +48,7 @@
   position: relative;
   flex-shrink: 0;
   width: 10px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
 }
 
 .icon {
@@ -45,30 +56,29 @@
   max-width: none;
   width: 100%;
   height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.headerContent:hover .icon {
+  transform: scale(1.05);
 }
 
 .titleText {
   flex-basis: 0;
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  font-weight: 500;
   flex-grow: 1;
   height: 18px;
-  line-height: 1;
+  line-height: 1.2;
   min-height: 1px;
   min-width: 1px;
   font-style: normal;
   position: relative;
   flex-shrink: 0;
-  color: #000000;
-  font-size: 15px;
-  text-align: left;
-
-  color: #000;
-
+  color: #1e293b;
   font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
+  text-align: left;
+  letter-spacing: -0.01em;
 }
 
 .caretContainer {
@@ -76,7 +86,7 @@
   position: relative;
   flex-shrink: 0;
   width: 8.814px;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .caretUp {
@@ -92,24 +102,27 @@
   max-width: none;
   width: 100%;
   height: 100%;
-  color: #666;
+  color: #64748b;
+  transition: color 0.2s ease;
+}
+
+.headerContent:hover .caretIcon {
+  color: #475569;
 }
 
 .panelContent {
   flex: 1;
   min-height: 0;
-  /* Important for flex children to allow shrinking */
   width: 100%;
   overflow: hidden;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+  background: #ffffff;
 }
 
 .panelContent.expanded {
   max-height: 250px;
-  /* Reduced from 500px */
   opacity: 1;
   overflow-y: auto;
-  /* Allow scrolling if content is too tall */
 }
 
 .panelContent.collapsed {
@@ -121,4 +134,24 @@
   padding: 0;
   height: 100%;
   overflow-y: auto;
+}
+
+/* Custom scrollbar styling */
+.panelContent::-webkit-scrollbar {
+  width: 6px;
+}
+
+.panelContent::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+.panelContent::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+  transition: background 0.2s ease;
+}
+
+.panelContent::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
