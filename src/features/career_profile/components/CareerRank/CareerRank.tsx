@@ -82,7 +82,8 @@ const CareerRankRow: React.FC<CareerRankRowProps> = ({
         }
       }}
     >
-      <div className={styles.avatarContainer}>
+      <div className={styles.avatarContainer}
+        onClick={() => characterSetter(characterId)}>
         <div className={styles.avatarWrapper}>
           <img 
             src={profileImage} 
@@ -91,7 +92,6 @@ const CareerRankRow: React.FC<CareerRankRowProps> = ({
           />
           <motion.div 
             className={styles.chatBadge} 
-            onClick={() => characterSetter(characterId)}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 400, damping: 17 }}
