@@ -81,9 +81,9 @@ const CareerRankRow: React.FC<CareerRankRowProps> = ({
           duration: 0.6
         }
       }}
+      onClick={() => characterSetter(characterId)}
     >
-      <div className={styles.avatarContainer}
-        onClick={() => characterSetter(characterId)}>
+      <div className={styles.avatarContainer}>
         <div className={styles.avatarWrapper}>
           <img 
             src={profileImage} 
