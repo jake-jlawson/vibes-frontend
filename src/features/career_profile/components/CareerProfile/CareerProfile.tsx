@@ -1,5 +1,6 @@
 // CareerProfile.tsx
 import React from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './CareerProfile.module.css';
 import NoDataMessage from '../../../../components/NoDataMessage';
 
@@ -44,6 +45,37 @@ interface CareerProfileProps {
     error?: string | null;
 }
 
+// Animation variants for score cards
+const scoreCardVariants = {
+    hidden: {
+        opacity: 0,
+        y: -10,
+        scale: 0.95
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            type: "spring" as const,
+            stiffness: 300,
+            damping: 24,
+            duration: 0.4
+        }
+    },
+    exit: {
+        opacity: 0,
+        y: -10,
+        scale: 0.95,
+        transition: {
+            type: "spring" as const,
+            stiffness: 300,
+            damping: 24,
+            duration: 0.3
+        }
+    }
+};
+
 const CareerProfile: React.FC<CareerProfileProps> = ({
     profileData = null,
     loading = false,
@@ -60,6 +92,19 @@ const CareerProfile: React.FC<CareerProfileProps> = ({
         if (score <= 3) return styles.lowScore;
         if (score <= 7) return styles.mediumScore;
         return styles.highScore;
+    };
+
+    // Sort personality scores from highest to lowest
+    const getSortedScores = () => {
+        if (!profileData?.personality_scores) return [];
+        
+        return Object.entries(profileData.personality_scores)
+            .sort(([, scoreA], [, scoreB]) => scoreB - scoreA)
+            .map(([trait, score]) => ({
+                trait,
+                score,
+                description: profileData.personality_descriptions[trait as keyof PersonalityDescriptions]
+            }));
     };
 
     if (loading) {
@@ -82,6 +127,8 @@ const CareerProfile: React.FC<CareerProfileProps> = ({
         return <NoDataMessage message="No profile data available yet. Keep chatting!" />;
     }
 
+    const sortedScores = getSortedScores();
+
     return (
         <div className={styles.container}>
             <div className={styles.header}>
@@ -92,25 +139,56 @@ const CareerProfile: React.FC<CareerProfileProps> = ({
             <div className={styles.personalitySection}>
                 <h3 className={styles.sectionTitle}>Personality Scores</h3>
                 <div className={styles.scoresGrid}>
-                    {Object.entries(profileData.personality_scores).map(([trait, score]) => (
-                        <div key={trait} className={styles.scoreCard}>
-                            <div className={styles.traitHeader}>
-                                <h4 className={styles.traitName}>{formatTraitName(trait)}</h4>
-                                <span className={`${styles.scoreValue} ${getScoreColor(score)}`}>
-                                    {score}/10
-                                </span>
-                            </div>
-                            <div className={styles.scoreBar}>
-                                <div
-                                    className={`${styles.scoreProgress} ${getScoreColor(score)}`}
-                                    style={{ width: `${(score / 10) * 100}%` }}
-                                />
-                            </div>
-                            <p className={styles.traitDescription}>
-                                {profileData.personality_descriptions[trait as keyof PersonalityDescriptions]}
-                            </p>
-                        </div>
-                    ))}
+                    <AnimatePresence mode="popLayout">
+                        {sortedScores.map(({ trait, score, description }) => (
+                            <motion.div 
+                                key={trait}
+                                layoutId={trait}
+                                className={styles.scoreCard}
+                                variants={scoreCardVariants}
+                                initial="hidden"
+                                animate="visible"
+                                exit="exit"
+                                layout
+                                transition={{
+                                    layout: {
+                                        type: "spring" as const,
+                                        stiffness: 300,
+                                        damping: 30,
+                                        duration: 0.6
+                                    }
+                                }}
+                            >
+                                <div className={styles.traitHeader}>
+                                    <h4 className={styles.traitName}>{formatTraitName(trait)}</h4>
+                                    <motion.span 
+                                        className={`${styles.scoreValue} ${getScoreColor(score)}`}
+                                        key={`${trait}-${score}`}
+                                        initial={{ scale: 1.2 }}
+                                        animate={{ scale: 1 }}
+                                        transition={{ duration: 0.3 }}
+                                    >
+                                        {score}/10
+                                    </motion.span>
+                                </div>
+                                <div className={styles.scoreBar}>
+                                    <motion.div
+                                        className={`${styles.scoreProgress} ${getScoreColor(score)}`}
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${(score / 10) * 100}%` }}
+                                        transition={{
+                                            duration: 0.8,
+                                            ease: "easeInOut",
+                                            delay: 0.1
+                                        }}
+                                    />
+                                </div>
+                                <p className={styles.traitDescription}>
+                                    {description}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
                 </div>
             </div>
 

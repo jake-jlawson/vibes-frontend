@@ -8,6 +8,10 @@
     
     overflow-y: auto;
     overflow-x: hidden;
+    
+    /* Improve animation performance */
+    will-change: transform;
+    contain: layout;
 }
 
 .careerRankRow {
@@ -18,6 +22,11 @@
   width: 100%;
   padding: 4px 19px 7px 25px;
   box-sizing: border-box;
+  
+  /* Ensure smooth animations */
+  will-change: transform;
+  transform-origin: center;
+  border-radius: 4px;
 }
 
 .avatarContainer {

@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: visible;
 }
 
 .characterContainer {
@@ -14,7 +15,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .characterImage {
@@ -25,5 +26,11 @@
   max-height: 120%;
   object-fit: contain;
   object-position: bottom center;
+  
+  will-change: transform, opacity;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 

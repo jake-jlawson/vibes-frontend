@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import styles from './ChatWindow.module.css';
 import bgImage from '../assets/3dbg.png';
 
@@ -27,7 +28,7 @@ import character_info from '../assets/character_info.json';
 const ChatWindow: React.FC = () => {
   const { chatStream, addMessage, clearChatStream, privateSend } = useChat();
   const { careerProfile, careerRecommendations, updateCareers } = useCareerProfile();
-  const [activeCharacter, setActiveCharacter] = useState<string>('neil_armstrong');
+  const [activeCharacter, setActiveCharacter] = useState<string>('mentor');
 
   /**Reset on mount*/
   useEffect(() => {
@@ -109,7 +110,16 @@ const ChatWindow: React.FC = () => {
 
       {/* Background */}
       
-      <div className={styles.bgOverlay} style={{ backgroundColor: character_info.characters[activeCharacter].color }}></div>
+      <motion.div 
+        className={styles.bgOverlay} 
+        animate={{ 
+          backgroundColor: character_info.characters[activeCharacter].color 
+        }}
+        transition={{
+          duration: 0.6,
+          ease: "easeInOut"
+        }}
+      />
       <img src={bgImage} alt="background" className={styles.bgImage} />
     </div>
   );
